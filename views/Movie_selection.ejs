@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CUbuntu:300,400,500,700" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="css/nouislider.min.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/plyr.css">
+    <link rel="stylesheet" href="css/photoswipe.css">
+    <link rel="stylesheet" href="css/default-skin.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="icon/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="icon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icon/apple-touch-icon-144x144.png">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Eslam Khaled">
+    <title>MediaPicks – Online Movies recommender</title>
+
+    <style>
+        /* Center the form content */
+        .sign__form {
+            text-align: center;
+        }
+
+        /* Change font color */
+        .sign__text {
+            color: #ff55a5;
+        }
+
+        /* Center the "Select your favourite movies" text */
+        .favorite-movies-title {
+            text-align: center;
+            color: #ff55a5;
+            font-weight: bold;
+        }
+
+        /* Hide all but the first movie form initially */
+        .sign__form--movies:not(:first-of-type) {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="body">
+
+    <div class="sign section--bg" data-bg="img/section/section.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="sign__content">
+
+
+                        <!-- favorite movies form -->
+                        <form action="/home" method="post" class="sign__form sign__form--movies" id="favoriteMoviesForm">
+                            <h3 class="favorite-movies-title">Select Your Favorite Movies & Ratings</h3>
+
+                            <div class="sign__group">
+                                <input type="text" name="movie" class="sign__input" placeholder="Favorite Movie 1">
+                                <input type="number" name="rating" class="sign__input" placeholder="Rating 1-5">
+                            </div>
+
+                            <div class="sign__group">
+                                <input type="text" name="movie2" class="sign__input" placeholder="Favorite Movie 2">
+                                <input type="number" name="rating2" class="sign__input" placeholder="Rating 1-5">
+                            </div>
+
+                            <div class="sign__group">
+                                <input type="text" name="movie3" class="sign__input" placeholder="Favorite Movie 3">
+                                <input type="number" name="rating3" class="sign__input" placeholder="Rating 1-5">
+                            </div>
+                            <div class="sign__group">
+                                <input type="text" name="movie4" class="sign__input" placeholder="Favorite Movie 4">
+                                <input type="number" name="rating4" class="sign__input" placeholder="Rating 1-5">
+                            </div>
+                            <div class="sign__group">
+                                <input type="text" name="movie5" class="sign__input" placeholder="Favorite Movie 5">
+                                <input type="number" name="rating5" class="sign__input" placeholder="Rating 1-5">
+                            </div>
+
+                            <button class="sign__btn" type="submit">Submit</button>
+                        </form>
+                        <!-- favorite movies form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.mousewheel.min.js"></script>
+    <script src="js/jquery.mCustomScrollbar.min.js"></script>
+    <script src="js/wNumb.js"></script>
+    <script src="js/nouislider.min.js"></script>
+    <script src="js/plyr.min.js"></script>
+    <script src="js/jquery.morelines.min.js"></script>
+    <script src="js/photoswipe.min.js"></script>
+    <script src="js/photoswipe-ui-default.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        // JavaScript function to submit the form
+        function showFavoriteMoviesForm(step) {
+            var forms = document.querySelectorAll('.sign__form--movies');
+            var registrationForm = document.getElementById('registrationForm');
+
+            forms.forEach(function(form, index) {
+                if (index === step - 1) {
+                    form.style.display = 'block';
+                    // Hide registration form when first favorite movie form is displayed
+                    if (index === 0) {
+                        registrationForm.style.display = 'none';
+                    }
+                } else {
+                    form.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
+message.txt
+6 KB

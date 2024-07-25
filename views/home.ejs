@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CUbuntu:300,400,500,700" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+	<link rel="stylesheet" href="css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="css/nouislider.min.css">
+	<link rel="stylesheet" href="css/ionicons.min.css">
+	<link rel="stylesheet" href="css/plyr.css">
+	<link rel="stylesheet" href="css/photoswipe.css">
+	<link rel="stylesheet" href="css/default-skin.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+	<!-- Favicons -->
+	<link rel="icon" type="image/png" href="img/logo-color.png" sizes="32x32">
+	<link rel="apple-touch-icon" href="img/logo-color.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/logo-color.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/logo-color.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="img/logo-color.png">
+
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Eslam Khaled ">
+	<title>MediaPicks – Online Movies recommender</title>
+    <style>
+        /* Header, Footer, and other existing styles remain unchanged */
+
+        /* Custom style for movie selection section */
+		.home__movie-selection {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid #ff55a5;
+    }
+
+    .home__movie-selection input {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ced4da;
+    }
+
+    .home__movie-selection button {
+        width: 100%;
+        padding: 10px;
+        background-color: #ff55a5;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .home__movie-selection button:hover {
+        background-color: #e6007e;
+    }
+		  /* Style for the icon button */
+		.header__icon-btn {
+   			background-color: transparent;
+    		border: none;
+    		cursor: pointer;
+    		padding: 0;
+		}
+
+	 	.header__icon-btn i {
+    		font-size: 24px; /* Adjust icon size as needed */
+   			color: #ffffff; /* Match website's button text color */
+		}
+
+		.header__icon-btn span {
+    	   font-family: 'Open Sans', sans-serif; /* Match website's font family */
+    	   font-weight: bold; /* Match website's font weight */
+    	   text-transform: uppercase; /* Match website's text transformation */
+		   margin-left: 5px; /* Adjust spacing between icon and text */
+	}
+	/* CSS */
+		.header__auth-content {
+    	  display: flex; /* Align items horizontally */
+   		  align-items: center; /* Align items vertically */
+		}
+
+		.header__auth-content button {
+    	  background-color: transparent;
+    	  border: none;
+     	  cursor: pointer;
+     	  padding: 0;
+   		  color: #ffffff; /* Change button text color to white */
+		}
+
+	    .header__auth-content button i {
+    	   font-size: 24px; /* Adjust icon size as needed */
+		}
+
+		.header__auth-content button span {
+    	  font-family: 'Open Sans', sans-serif; /* Match website's font family */
+    	  font-weight: bold; /* Match website's font weight */
+    	   text-transform: uppercase; /* Match website's text transformation */
+    		margin-left: 5px; /* Adjust spacing between icon and text */
+		}
+
+		.modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+
+        /* Close button style */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+		.modal-buttons {
+    		display: flex;
+    		justify-content: space-between;
+    		margin-top: 20px;
+		}
+
+		.modal-button {
+    		padding: 10px 20px;
+    		border-radius: 5px;
+    		cursor: pointer;
+		}
+
+ 		.modal-button--yes {
+   	 	  background-color: #ff55a5;
+    	  color: #ffffff;
+		}
+
+		.modal-button--no {
+    		background-color: #ced4da;
+    		color: #333333;
+		}
+    	.header__auth-content {
+        display: flex;
+        align-items: center;
+    	}
+
+    	.header__icon-btn {
+        margin-right: 10px; /* Adjust the margin as needed to create space */
+    	}
+
+    	.header__user-name {
+        font-family:  sans-serif; /* Replace "Your Font Name" with your desired font */
+        color: white; /* Replace "your_color_code" with your desired color code */
+        font-size: 16px; /* Adjust the font size as needed */
+        font-weight: bold; /* Add font weight if desired */
+        padding-left: 25px; /* Adjust the padding to create space for the icon */
+    	}
+/* Positioning the close button */
+		.close {
+    		position: absolute;
+    		top: 10px;
+    		right: 10px;
+		}
+    </style>
+</head>
+<body class="body">
+	
+	<!-- header -->
+	<header class="header">
+		<div class="header__wrap">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="header__content">
+							<!-- header logo -->
+							<a href="#" class="header__logo" onclick="window.location.reload();">
+								<img src="img/logo-color.png" alt="">
+							</a>
+							<!-- end header logo -->
+
+							<!-- header auth -->
+							<!-- header auth -->
+<!-- header auth -->
+<div class="header__auth">
+    <div class="header__auth-content">
+        <button class="header__icon-btn" type="button" id="logoutButton">    
+            <i class="icon ion-ios-log-in"></i>
+            <span>Log Out</span>
+        </button>
+        <span class="header__user-name" id="userName">
+            <i class="fas fa-user"></i> <!-- Font Awesome user icon -->
+            <%= uname %>
+        </span>
+    </div>
+</div>
+
+<!-- end header auth -->
+
+<!-- end header auth -->
+
+								</button>
+
+
+								<!-- <a href="signin" class="header__sign-in">
+									<i class="icon ion-ios-log-in"></i>
+									<span>sign in</span>
+								</a> -->
+							</div>
+							</div>
+							<!-- end header auth -->
+
+							<!-- header menu btn -->
+							<button class="header__btn" type="button">
+								<span></span>
+								<span></span>
+								<span></span>
+							</button>
+							<!-- end header menu btn -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	
+	</header>
+	<!-- end header -->
+	<!-- home -->
+	<section class="home">
+		<!-- home bg -->
+		<div class="owl-carousel home__bg">
+			<div class="item home__cover" data-bg="img/home/home__bg.jpg"></div>
+			<div class="item home__cover" data-bg="img/home/home__bg2.jpg"></div>
+			<div class="item home__cover" data-bg="img/home/home__bg3.jpg"></div>
+			<div class="item home__cover" data-bg="img/home/home__bg4.jpg"></div>
+		</div>
+		<!-- end home bg -->
+
+		<div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="home__title"><b>RECOMMENDATIONS </b> </h1>
+                    <button class="home__nav home__nav--prev" type="button">
+                        <i class="icon ion-ios-arrow-round-back"></i>
+                    </button>
+                    <button class="home__nav home__nav--next" type="button">
+                        <i class="icon ion-ios-arrow-round-forward"></i>
+                    </button>
+                </div>
+
+				<div class="col-12">
+                    <div class="owl-carousel home__carousel">
+                        <!-- Use a loop to generate carousel items for each poster -->
+                       <!-- Update the loop to include ratings -->
+                       <% for (let i = 0; i < posters.length; i++) { %>
+                        <div class="item">
+                            <!-- card -->
+                            <div class="card card--big">
+                                <div class="card__cover">
+                                    <img src="<%= posters[i] %>" alt="Movie Poster" onerror="this.src='Screenshot (384).png';">
+                                    <!-- Adjust this link if you have a play button overlay -->
+                                    <a href="#" class="card__play">
+                                        <i class="icon ion-ios-play"></i>
+                                    </a>
+                                </div>
+                                <div class="card__content">
+                                    <!-- Use appropriate data for movie name and category -->
+                                    <h3 class="card__title"><%= name[i] %></h3>
+                                    <span class="card__category">
+                                        <!-- Add categories here if available -->
+                                    </span>
+                                    <!-- Display rating here -->
+                                    <span class="card__rate"><i class="icon ion-ios-star"></i> <%= ratings[i] %></span>
+                                </div>
+                            </div>
+                            <!-- end card -->
+                        </div>
+                    <% } %>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	<section class="home__movies" style="margin-bottom: 50px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h1 class="home__title"><b>Fast Movie Recommender</b></h1>
+					<!-- Movie selection form -->
+					<form action="/movies" method="POST" class="home__movie-selection">
+						<div class="form-group">
+							<input type="text" id="favoriteMovie" name="favoriteMovie" class="form-control" required placeholder="Enter Your Favorite Movie">
+						</div>
+						<button type="submit" class="btn btn-primary">Get Recommendations</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	
+	<div id="logoutModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>Are you sure you want to log out?</p>
+			<div class="modal-buttons">
+				<button id="confirmLogout" class="modal-button modal-button--yes">Yes</button>
+				<button id="cancelLogout" class="modal-button modal-button--no">No</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- footer -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				
+				
+				<!-- footer list -->
+				<div class="col-12 col-sm-4 col-md-3">
+					<h6 class="footer__title">Contact US</h6>
+					<ul class="footer__list">
+					
+						<li><a href="mailto:esalmmokhtar333@gmail.com">esalmmokhtar333@gmail.com</a></li>
+					</ul>
+				
+				</div>
+				<!-- end footer list -->
+				<div class="col-11">
+					<div class="footer__copyright">
+					
+							<li><a href="#">Designed and devolped by Eslam&Wael</a></li>
+					
+					</div>
+					<style>
+						.footer__copyright a {
+							color: #ff55a5; /* Replace '#ff0000' with the color you want */
+							/* You can use color names, hex codes, RGB values, etc. */
+						}
+					</style>
+				</div>
+			
+			</div>
+		</div>
+	</footer>
+	<!-- end footer -->
+
+	<!-- JS -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.mousewheel.min.js"></script>
+	<script src="js/jquery.mCustomScrollbar.min.js"></script>
+	<script src="js/wNumb.js"></script>
+	<script src="js/nouislider.min.js"></script>
+	<script src="js/plyr.min.js"></script>
+	<script src="js/jquery.morelines.min.js"></script>
+	<script src="js/photoswipe.min.js"></script>
+	<script src="js/photoswipe-ui-default.min.js"></script>
+	<script src="js/main.js"></script>
+	<script>
+     console.log('g')
+		$(document).ready(function () {
+    // Get the modal
+    		var modal = $("#logoutModal");
+
+    // Get the button that opens the modal
+    		var logoutButton = $("#logoutButton");
+
+    // When the user clicks on the "Log Out" button, open the modal
+    		logoutButton.on("click", function () {
+        		modal.show();
+    		});
+
+    // When the user clicks on <span> (x), close the modal
+    		$(".close").on("click", function () {
+        		modal.hide();
+    		});
+
+    // Confirm logout action when "Yes" button is clicked
+    		$("#confirmLogout").on("click", function () {
+        // Redirect to index page
+        		window.location.href = "/index"; // Change to the correct index page URL
+        // Close the modal
+        		modal.hide();
+    		});
+
+    // Close modal when "No" button is clicked
+    		$("#cancelLogout").on("click", function () {
+        		modal.hide();
+    		});
+
+    // Close the modal when the user clicks outside of it
+    		$(window).on("click", function (event) {
+        		if (event.target == modal[0]) {
+            		modal.hide();
+        		}
+    		});
+		});
+
+
+    </script>
+
+</body>
+
+</html>

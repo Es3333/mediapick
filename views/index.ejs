@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CUbuntu:300,400,500,700" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+	<link rel="stylesheet" href="css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="css/nouislider.min.css">
+	<link rel="stylesheet" href="css/ionicons.min.css">
+	<link rel="stylesheet" href="css/plyr.css">
+	<link rel="stylesheet" href="css/photoswipe.css">
+	<link rel="stylesheet" href="css/default-skin.css">
+	<link rel="stylesheet" href="css/main.css">
+
+	<!-- Favicons -->
+	<link rel="icon" type="image/png" href="img/logo-color.png" sizes="32x32">
+	<link rel="apple-touch-icon" href="img/logo-color.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/logo-color.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/logo-color.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="img/logo-color.png">
+
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Eslam Khaled ">
+	<title>MediaPicks – Online Movies recommender</title>
+<style>
+			.home__movie-selection {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid #ff55a5;
+    }
+
+    .home__movie-selection input {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ced4da;
+    }
+
+    .home__movie-selection button {
+        width: 100%;
+        padding: 10px;
+        background-color: #ff55a5;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .home__movie-selection button:hover {
+        background-color: #e6007e;
+    }
+	.header__actions {
+    position: absolute;
+    top: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+}
+.home__title {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.must-watch-title {
+    font-size: 36px;
+    color: #f7f5f6;
+}
+
+.movie-title {
+    font-size: 24px;
+    color: #fafafa;
+    margin-bottom: 10px;
+}
+.home__movies {
+    margin-top: 200px; /* Add margin to the top of the second section */
+    padding-bottom: 20px; /* Add padding to the bottom of the second section for spacing */
+}
+
+</style>
+</head>
+<body class="body">
+	
+	<!-- header -->
+	<header class="header">
+		<div class="header__wrap">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="header__content">
+							<!-- header logo -->
+							<a href="index" class="header__logo">
+								<img src="img/logo-color.png" alt="">
+							</a>->
+						
+
+							<div class="header__actions">
+								<a href="signin" class="header__sign-in">
+									<i class="icon ion-ios-log-in"></i>
+									<span>Sign In</span>
+								</a>
+							</div>
+							
+							
+							<!-- end header auth -->
+
+							<!-- header menu btn -->
+							<button class="header__btn" type="button">
+								<span></span>
+								<span></span>
+								<span></span>
+							</button>
+							<!-- end header menu btn -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+	</header>
+	<!-- end header -->
+
+	<!-- home -->
+	<section class="home">
+		<!-- home bg -->
+		<div class="owl-carousel home__bg">
+			<div class="item home__cover" data-bg="img/home/home__bg.jpg"></div>
+			<div class="item home__cover" data-bg="img/home/home__bg2.jpg"></div>
+			<div class="item home__cover" data-bg="img/home/home__bg3.jpg"></div>
+			<div class="item home__cover" data-bg="img/home/home__bg4.jpg"></div>
+		</div>
+		<!-- end home bg -->
+
+	
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<h1 class="home__title"><b class="must-watch-title">Must Watch</b></h1>
+						<button class="home__nav home__nav--prev" type="button">
+							<i class="icon ion-ios-arrow-round-back"></i>
+						</button>
+						<button class="home__nav home__nav--next" type="button">
+							<i class="icon ion-ios-arrow-round-forward"></i>
+						</button>
+					</div>
+		
+					<div class="col-12">
+						<div class="owl-carousel home__carousel">
+							<!-- Use a loop to generate carousel items for each poster -->
+							<% for (let i = 0; i < posters.length; i++) { %>
+							<div class="item">
+								<!-- card -->
+								<div class="card card--big">
+									<div class="card__cover">
+										<img src="<%= posters[i] %>" alt="Movie Poster" onerror="this.src='Screenshot (384).png';">
+										<!-- Adjust this link if you have a play button overlay -->
+										<a href="#" class="card__play">
+											<i class="icon ion-ios-play"></i>
+										</a>
+									</div>
+									<div class="card__content">
+										<!-- Use appropriate data for movie name and category -->
+										<h3 class="card__title movie-title"><%= name[i] %></h3>
+										<span class="card__category">
+											<!-- Add categories here if available -->
+										</span>
+										<!-- Display rating here -->
+										<span class="card__rate"><i class="icon ion-ios-star"></i> <%= ratings[i] %></span>
+									</div>
+								</div>
+								<!-- end card -->
+							</div>
+							<% } %>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+
+	<section class="home__movies" style="margin-bottom: 50px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h1 class="home__title"><b>Fast Movie Recommender</b></h1>
+					<!-- Movie selection form -->
+					<form action="/movies" method="POST" class="home__movie-selection">
+						<div class="form-group">
+							<input type="text" id="favoriteMovie" name="favoriteMovie" class="form-control" required placeholder="Enter Your Favorite Movie">
+						</div>
+						<button type="submit" class="btn btn-primary">Get Recommendations</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- footer -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				
+				
+				<!-- footer list -->
+				<div class="col-12 col-sm-4 col-md-3">
+					<h6 class="footer__title">Contact US</h6>
+					<ul class="footer__list">
+					
+						<li><a href="mailto:esalmmokhtar333@gmail.com">esalmmokhtar333@gmail.com</a></li>
+					</ul>
+				
+				</div>
+				<!-- end footer list -->
+				<div class="col-11">
+					<div class="footer__copyright">
+					
+							<li><a href="#">Designed and devolped by Eslam Khaled </a></li>
+					
+					</div>
+					<style>
+						.footer__copyright a {
+							color: #ff55a5; /* Replace '#ff0000' with the color you want */
+							/* You can use color names, hex codes, RGB values, etc. */
+						}
+					</style>
+				</div>
+			
+			</div>
+		</div>
+	</footer>
+	<!-- end footer -->
+
+	<!-- JS -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.mousewheel.min.js"></script>
+	<script src="js/jquery.mCustomScrollbar.min.js"></script>
+	<script src="js/wNumb.js"></script>
+	<script src="js/nouislider.min.js"></script>
+	<script src="js/plyr.min.js"></script>
+	<script src="js/jquery.morelines.min.js"></script>
+	<script src="js/photoswipe.min.js"></script>
+	<script src="js/photoswipe-ui-default.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
+</html>
